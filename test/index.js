@@ -177,4 +177,20 @@ describe('redux-mock-store', () => {
     expect(() => store.replaceReducer(123))
       .toThrow('Expected the nextReducer to be a function.')
   })
+
+  it('get an action by type', () => {
+    const action = { type: 'ADD_ITEM' }
+    const store = mockStore({})
+
+    store.dispatch(action)
+    expect(store.getAction('ADD_ITEM')).toEqual(action)
+  })
+
+  it('tell if an action has been dispatched', () => {
+    const action = { type: 'ADD_ITEM' }
+    const store = mockStore({})
+
+    store.dispatch(action)
+    expect(store.isActionTypeDispatched('ADD_ITEM')).toEqual(true)
+  })
 })
