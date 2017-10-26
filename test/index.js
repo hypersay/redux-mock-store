@@ -191,7 +191,7 @@ describe('redux-mock-store', () => {
     const store = mockStore({})
 
     store.dispatch(action)
-    expect(store.getAction('REMOVE_ITEM')).toEqual(null)
+    expect(store.getAction('REMOVE_ITEM')).toBe(undefined)
   })
 
   it('tell if an action has been dispatched', () => {
