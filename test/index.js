@@ -186,11 +186,27 @@ describe('redux-mock-store', () => {
     expect(store.getAction('ADD_ITEM')).toEqual(action)
   })
 
+  it('get null if the action has not been dispatched', () => {
+    const action = { type: 'ADD_ITEM' }
+    const store = mockStore({})
+
+    store.dispatch(action)
+    expect(store.getAction('REMOVE_ITEM')).toEqual(null)
+  })
+
   it('tell if an action has been dispatched', () => {
     const action = { type: 'ADD_ITEM' }
     const store = mockStore({})
 
     store.dispatch(action)
     expect(store.isActionTypeDispatched('ADD_ITEM')).toEqual(true)
+  })
+
+  it('tell if an action has not been dispatched', () => {
+    const action = { type: 'ADD_ITEM' }
+    const store = mockStore({})
+
+    store.dispatch(action)
+    expect(store.isActionTypeDispatched('REMOVE_ITEM')).toEqual(false)
   })
 })

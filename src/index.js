@@ -22,7 +22,7 @@ export default function configureStore (middlewares = []) {
         },
 
         isActionTypeDispatched (type) {
-          return self.getAction(type) !== null
+          return self.getAction(type) !== undefined
         },
 
         dispatch (action) {
