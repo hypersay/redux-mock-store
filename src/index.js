@@ -17,12 +17,16 @@ export default function configureStore (middlewares = []) {
           return actions
         },
 
-        getAction (type) {
-          return actions.find(a => a.type === type)
+        getAction (fn) {
+          return actions.find(fn)
+        },
+
+        getActionByType (type) {
+          return self.getAction(a => a.type === type)
         },
 
         isActionTypeDispatched (type) {
-          return self.getAction(type) !== undefined
+          return self.getActionByType(type) !== undefined
         },
 
         dispatch (action) {
